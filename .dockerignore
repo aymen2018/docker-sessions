@@ -1,0 +1,7 @@
+# Ignore development and build files
+node_modules
+npm-debug.log
+Dockerfile
+.git
+.gitignore
+.dockerignore
