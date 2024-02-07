@@ -21,6 +21,14 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      
+      - name: Install wait-for-it
+        run: sudo apt-get install -y wait-for-it
+
+      - name: Wait for MongoDB Connection
+        run: wait-for-it --timeout=60 http://localhost:3000
+
+
       - name: Test MongoDB Connection
         run: curl http://localhost:3000/test-db-connection
 
