@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - PORT=3000
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
+    volumes:
+      - /home/aymen/Documents/docker_sessions/nodejs_project:/app  # Correct volume mount path
+
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: mydatabase
+    command: mongod --auth
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
