@@ -33,7 +33,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t 211125305049.dkr.ecr.eu-north-1.amazonaws.com/docker-session:latest .
+          docker build -t docker-session:latest .
           docker images
 
   push-to-ecr:
@@ -55,7 +55,9 @@ jobs:
         run: aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 211125305049.dkr.ecr.eu-north-1.amazonaws.com
 
       - name: List Docker Images
-        run: docker images
+        run: |
+          docker build -t docker-session:latest .
+          docker images
 
       - name: Push Docker image to ECR
         run: |
