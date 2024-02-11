@@ -33,7 +33,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t docker-session:latest .
+          docker build -t 211125305049.dkr.ecr.eu-north-1.amazonaws.com/docker-session:latest .
           docker images
 
   push-to-ecr:
