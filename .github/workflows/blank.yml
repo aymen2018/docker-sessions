@@ -32,7 +32,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build Docker image
-        run: docker build -t docker-session:latest .
+        run: |
+          docker build -t docker-session:latest .
+          docker images
 
   push-to-ecr:
     needs: build-docker
