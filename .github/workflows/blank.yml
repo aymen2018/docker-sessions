@@ -55,8 +55,8 @@ jobs:
 
       - name: Push Docker image to ECR
         run: |
-          docker tag your-image-name:latest ${{ steps.login-ecr.outputs.registry }}:latest
-          docker push ${{ steps.login-ecr.outputs.registry }}:latest
+          docker tag docker-session:latest 211125305049.dkr.ecr.eu-north-1.amazonaws.com/docker-session:latest
+          docker push 211125305049.dkr.ecr.eu-north-1.amazonaws.com/docker-session:latest
 
 
 
