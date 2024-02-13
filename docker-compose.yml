@@ -11,7 +11,7 @@ services:
     links:
       - mongodb
     volumes:
-      - /home/aymen/Documents/docker_sessions/nodejs_project:/app  # Correct volume mount path
+      - ./:/usr/src/app  # Mount the source code directory as a volume
 
 
   mongodb:
