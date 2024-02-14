@@ -59,25 +59,25 @@ jobs:
           docker tag docker-session:latest 211125305049.dkr.ecr.eu-north-1.amazonaws.com/docker-session:latest
           docker push 211125305049.dkr.ecr.eu-north-1.amazonaws.com/docker-session:latest
 
-    deploy-to-ec2:
-      needs: push-to-ecr
-      runs-on: ubuntu-latest
+  deploy-to-ec2:
+    needs: push-to-ecr
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v3
-          with:
-            host: 172.31.41.168  # Use the public IP address or hostname of your EC2 instance
-            username: ubuntu
-            key: ${{ secrets.EC2_KEY }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          host: 172.31.41.168  # Use the public IP address or hostname of your EC2 instance
+          username: ubuntu
+          key: ${{ secrets.EC2_KEY }}
 
-        - name: Deploy to EC2
-          run: |
-            # Add deployment steps here, e.g., pulling the Docker image and restarting the container on your EC2 instance.
-            sudo docker pull 211125305049.dkr.ecr.eu-north-1.amazonaws.com/docker-session:latest
-            sudo docker stop nodejs
-            sudo docker rm nodejs
-            sudo docker run -d -p 3000:3000 --name nodejs 211125305049.dkr.ecr.eu-north-1.amazonaws.com/docker-session:latest
+      - name: Deploy to EC2
+        run: |
+          # Add deployment steps here, e.g., pulling the Docker image and restarting the container on your EC2 instance.
+          sudo docker pull 211125305049.dkr.ecr.eu-north-1.amazonaws.com/docker-session:latest
+          sudo docker stop nodejs
+          sudo docker rm nodejs
+          sudo docker run -d -p 3000:3000 --name nodejs 211125305049.dkr.ecr.eu-north-1.amazonaws.com/docker-session:latest
 
   
 
