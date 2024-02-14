@@ -78,9 +78,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-north-1
 
-      - name: Deploy to EC2
+      - name: Docker Login to ECR
         run: |
           aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 211125305049.dkr.ecr.eu-north-1.amazonaws.com
+
+      - name: Deploy to EC2
+        run: |
           # Add deployment steps here, e.g., pulling the Docker image and restarting the container on your EC2 instance.
           sudo docker pull 211125305049.dkr.ecr.eu-north-1.amazonaws.com/docker-session:latest
           sudo docker stop nodejs
