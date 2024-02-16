@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // MongoDB connection
-mongoose.connect('mongodb://root:example@localhost:27017/mydatabase', {
+mongoose.connect('mongodb://root:example@13.49.241.239:27017/mydatabase', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   authSource: 'admin', // MongoDB authentication source
