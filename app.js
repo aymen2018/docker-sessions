@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // MongoDB connection
-mongoose.connect('mongodb://root:example@13.49.241.239:27017/mydatabase', {
+mongoose.connect('mongodb://root:example@mongodb:27017/mydatabase', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   authSource: 'admin', // MongoDB authentication source
@@ -76,5 +76,5 @@ app.listen(PORT, '0.0.0.0', () => {
 
 // Define a route
 app.get('/', (req, res) => {
-  res.send('Hello, How are you version-test');
+  res.send('Hello, How are you version');
 });
